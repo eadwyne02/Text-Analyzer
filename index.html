@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="bootstrap.css">
+    <link rel="stylesheet" href="word.css">
+    <title>Text Analyser</title>
+</head>
+<body>
+    <div class="analyser-head">
+        <h1>Text Analyser</h1>
+        <h2>Count Letter, words and sentences instantly.</h2>
+    </div>
+    <div class="info">
+        <div class="info-body">
+        <div class="text">
+            <textarea name="" id="enterText" placeholder="Type or paste your text here..."></textarea>
+        </div>
+        <div class="card-info">
+            <h3>RESULTS</h3>
+            <div class="result-info">
+            <div class="ml-4 counter"> 
+                <h5>Letters:</h5>
+                <h5>Words:</h5>
+                <h5>Sentences:</h5>
+            </div>
+            <div class="counter-info">
+               <h5 id="letterresult">0</h5> 
+               <h5 id="wordresult">0</h5> 
+               <h5 id="sentenceresult">0</h5> 
+            </div>
+            </div>
+        </div>
+        </div>
+        <div class="buttons">
+            <div></div>
+            <button id="reset">Reset</button>
+            <button id="report">Download Report</button>
+        </div>
+    </div>
+    <script src="word.js"></script>
+</body>
+</html>
