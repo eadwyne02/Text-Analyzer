@@ -65,13 +65,21 @@ text.addEventListener("input", function(){
     }
 });
 reset.addEventListener("click", function(){
-    text.value=""
+    if(text.value ===""){
+        alert("No text")
+        return;
+    }
+    else{text.value=""
     letterResult.innerText = 0
     wordResult.innerText = 0
-    sentenceResult.innerText = 0
+    sentenceResult.innerText = 0}
 })
 report.addEventListener ("click", function(){
-    let report = `
+    if(text.value === ""){
+        alert("No text to analyse")
+        return;
+    }
+    else{let report = `
     --- Text Analysis Report ---
     Date: ${ new Date().toLocaleString()}
     Total characters = ${lettercount}
@@ -94,5 +102,10 @@ report.addEventListener ("click", function(){
     --- Original Text ---
     ${text.value}
     ----------------------------`
-    console.log(report)
+
+    const blob = new Blob([report], { type: "text/plain" });
+    const link = document.createElement("a");
+    link.href = URL.createObjectURL(blob);
+    link.download = "text_report.txt";
+    link.click();}
 })
