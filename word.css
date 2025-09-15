@@ -93,7 +93,7 @@
 #report:hover{
     box-shadow: 4px 4px 4px rgba(0,0,0,0.1);
 }
-@media (max-width: 767px) {
+@media screen and (max-width: 768px) and (orientation: portrait) {
     .analyser-head{
         height: 90px;
     }
@@ -121,7 +121,40 @@
     margin-top: 40px; 
     }
 }
-@media (max-width: 400px){
+@media screen and (max-width: 768px) and (orientation: landscape) {
+    .info-body{
+        display: flex;
+        flex-direction: column;
+    }
+    .info{
+        height: auto;
+    }
+    .text textarea{
+        width: 600px;
+        margin-right: 10px;
+    }
+    #report{
+        margin-right: 30px;
+        margin-bottom: 50px;
+    }
+}
+@media screen and (min-width: 769px) and (max-width: 1024px) and (orientation: landscape) {
+    .info-body{
+        display: flex;
+        flex-direction: column;
+    }
+    .text textarea{
+        width: 790px;
+    }
+    .info{
+        height: auto;
+    }
+     #report{
+        margin-right: 30px;
+        margin-bottom: 50px;
+    }
+}
+@media screen and  (max-width: 400px) and (orientation: portrait) {
     .text textarea{
         width: 320px;
     }
@@ -131,5 +164,9 @@
     }
     .info{
         height: auto;
+    }
+    .info-body{
+        display: flex;
+        flex-direction: column;
     }
 }
