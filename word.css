@@ -156,7 +156,7 @@
 }
 @media screen and  (max-width: 400px) and (orientation: portrait) {
     .text textarea{
-        width: 320px;
+        width: 300px;
     }
     #report{
         margin-right: 20px;
