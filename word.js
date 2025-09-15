@@ -79,7 +79,11 @@ report.addEventListener ("click", function(){
         alert("No text to analyse")
         return;
     }
-    else{let report = `
+    else{
+        const { jsPDF } = window.jspdf;
+        const doc = new jsPDF();
+
+        let report = `
     --- Text Analysis Report ---
     Date: ${ new Date().toLocaleString()}
     Total characters = ${lettercount}
@@ -103,9 +107,26 @@ report.addEventListener ("click", function(){
     ${text.value}
     ----------------------------`
 
-    const blob = new Blob([report], { type: "text/plain" });
-    const link = document.createElement("a");
-    link.href = URL.createObjectURL(blob);
-    link.download = "text_report.txt";
-    link.click();}
-})
+    const pageWidth = doc.internal.pageSize.getWidth();
+    const pageHeight = doc.internal.pageSize.getHeight();
+    const margin = 10;
+
+    // Wrap text
+    const wrappedText = doc.splitTextToSize(report, pageWidth - margin * 2);
+
+    let y = 10; // start position
+    const lineHeight = 7; // spacing between lines
+
+    wrappedText.forEach(line => {
+        if (y + lineHeight > pageHeight - margin) {
+            // Start a new page if we reach bottom
+            doc.addPage();
+            y = margin;
+        }
+        doc.text(line, margin, y);
+        y += lineHeight;
+    });
+
+    doc.save("Text_Analysis_Report.pdf");
+ }
+});
